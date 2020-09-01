@@ -106,7 +106,7 @@ void TestPtr()
       1, NULL, p);
   printf("passed\n");
 
-  printf("      swap_char...");
+  printf("      swap_int...");
   int x = 1; 
   int y = 2;
   swap_int(&x, &y);
