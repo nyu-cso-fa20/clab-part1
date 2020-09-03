@@ -9,7 +9,7 @@ void set_to_five(int *ptr)
   // TODO: Your code here.
 }
 
-// Assign NULL value to the pointer variable pointed to by ptr.
+// Assign NULL value to the pointer variable pointed to by dp.
 // Since dp points to a pointer variable, its type is a double pointer 
 // indicated by two stars ** in the type name.
 //
