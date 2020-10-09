@@ -10,7 +10,7 @@ clab_test: $(OBJS)
 	gcc $^ -o $@ 
 
 %.o : %.c
-	gcc $(CFLAGS) -c ${<}
+	gcc $(CFLAGS) -c $^
 
 
 clean :
