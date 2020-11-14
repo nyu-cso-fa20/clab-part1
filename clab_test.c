@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <strings.h>
 #include <stdbool.h>
-#include <getopt.h>
 
 #include "panic_cond.h"
 #include "bitfloat.h"
@@ -74,7 +73,7 @@ void TestBitFloat()
     unsigned char r = get_exponent_field(f);
     panic_cond(r == i+127,
         "float %f (bit pattern %x) exponent should be %x (returned %x)",
-        f, *(int *)&f, i+127, r);
+        f, *(int *)&f, i, r);
     bf = bf * 2.0;
 
     sf = sf / 2.0;
@@ -173,27 +172,10 @@ void TestArray()
 
 }
 
-typedef void (*TestFunc)();
-
 int main(int argc, char **argv)
 {
-#define NUM_TESTS 3
-	TestFunc fs[NUM_TESTS]= {TestBitFloat, TestPtr, TestArray};
+  TestBitFloat();
+  TestPtr();
+  TestArray();
 
-	int which_test = 0;
-	int c;
-	while ((c = getopt(argc, argv, "t:")) != -1) {
-		switch (c) {
-			case 't':
-				which_test = atoi(optarg);
-				break;
-    }
-  }
-  for (int i = 0; i < NUM_TESTS; i++) {
-		if ((which_test == 0) || (which_test == (i+1))) {
-			fs[i]();
-      if (which_test > 0) 
-        break;
-    }
-  }
 }
